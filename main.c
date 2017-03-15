@@ -32,6 +32,7 @@ int main(void) {
         int falseStart = checkForButtonInput(random, false);
         if (falseStart) {
             printf("Valse start: %d \n", checkForButtonInput(random, false));
+            delay(1000);
             continue;
         }
 
