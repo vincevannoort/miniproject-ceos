@@ -33,7 +33,7 @@ int main(void) {
     clock_gettime(CLOCK_MONOTONIC_RAW, &end);
 
     uint64_t delta_us = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_nsec - start.tv_nsec) / 1000;
-    printf("Took: %" PRIu64 "\n", delta_us);
+    printf("Took: %f", (double)delta_us);
     // 5. Wachten op user input
 
     // 6. Gemeten tijd & wie gewonnen heeft tonen
