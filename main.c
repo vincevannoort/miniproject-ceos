@@ -14,7 +14,8 @@ int main(void) {
     setupPins();
 
     // 2. Random tijd wachten voordat de game echt start
-    int random = rand() % 500;
+    srand(time(NULL));
+    int random = rand() % 500 + 1;
     printf("TIJDELIJK: wachten voor %d milliseconden.\n", random);
 
     // 3. In tussentijd kijken voor valse start
