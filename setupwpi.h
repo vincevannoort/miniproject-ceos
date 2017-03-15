@@ -60,7 +60,6 @@ int setupPins() {
 }
 
 int checkForButtonInput(int timeToMeasure, bool realGame) {
-  int i = 0;
 
   if (realGame == true) {
     digitalWrite(buzz, 1);
@@ -69,7 +68,7 @@ int checkForButtonInput(int timeToMeasure, bool realGame) {
     printf ("Game started.\n");
   }
 
-  for (i = 0; i < timeToMeasure; i++) {
+  for (int i = 0; i < timeToMeasure; i++) {
     // 1 pressed
     if(digitalRead (b11) == 1 || digitalRead(b12) == 1){
       digitalWrite(red, 1);
