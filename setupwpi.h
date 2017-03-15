@@ -59,8 +59,9 @@ int setupPins() {
 }
 
 char checkForButtonInput(int timeToMeasure) {
+  int i = 0;
   printf ("Game started.\n") ;
-  for (int i = 0; i < (timeToMeasure * 10); i++)
+  for (i = 0; i < (timeToMeasure * 10); i++)
   {
     // 1 pressed
     if(digitalRead (b11) == 1){
