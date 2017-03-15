@@ -65,8 +65,8 @@ int checkForButtonInput(int timeToMeasure, bool realGame) {
   if (realGame == true) {
     digitalWrite(buzz, 1);
     delay(50);
-    digitalWrite(buzz, 0)
-    printf ("Game started.\n") ;
+    digitalWrite(buzz, 0);
+    printf ("Game started.\n");
   }
 
   for (i = 0; i < (timeToMeasure * 10); i++) {
