@@ -29,6 +29,7 @@
 */
  
 #include <stdio.h>
+#include <stdbool.h>
 #include <wiringPi.h>
 #include <time.h>
 
@@ -58,14 +59,17 @@ int setupPins() {
   printf ("Done. ;P\n\n") ;
 }
 
-int checkForButtonInput(int timeToMeasure) {
+int checkForButtonInput(int timeToMeasure, bool realGame) {
   int i = 0;
-  digitalWrite(buzz, 1);
-  delay(50);
-  digitalWrite(buzz, 0);
-  printf ("Game started.\n") ;
-  for (i = 0; i < (timeToMeasure * 10); i++)
-  {
+
+  if (realGame == true) {
+    digitalWrite(buzz, 1);
+    delay(50);
+    digitalWrite(buzz, 0)
+    printf ("Game started.\n") ;
+  }
+
+  for (i = 0; i < (timeToMeasure * 10); i++) {
     // 1 pressed
     if(digitalRead (b11) == 1 || digitalRead(b12) == 1){
       printf("Button 1 pressed\n");
