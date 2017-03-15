@@ -27,11 +27,13 @@ int main(void) {
     }
 
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
-    struct timeval stop, start;
-    gettimeofday(&start, NULL);
+    struct timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     printf("Winner: %d\n", checkForButtonInput(500, true));
-    gettimeofday(&stop, NULL);
-    printf("took %lu\n", stop.tv_usec - start.tv_usec);
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+
+    uint64_t delta_us = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_nsec - start.tv_nsec) / 1000;
+    printf("Took: %" PRIu64 "\n", delta_us);
     // 5. Wachten op user input
 
     // 6. Gemeten tijd & wie gewonnen heeft tonen
