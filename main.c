@@ -33,7 +33,6 @@ int main(void) {
     printf("Winner: %d\n", checkForButtonInput(500, true));
     gettimeofday(&end, NULL);
 
-    diff_t = difftime(end_t, start_t);
     printf("Time to press: %f\n", (1000 * (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec) / 1000));
 
     // 5. Wachten op user input
