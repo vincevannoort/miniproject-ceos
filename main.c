@@ -16,7 +16,7 @@ int main(void) {
     // 2. Random tijd wachten voordat de game echt start
     srand(time(NULL));
     int random = rand() % 500 + 1;
-    printf("TIJDELIJK: wachten voor %.1f milliseconden.\n", random * 10);
+    printf("TIJDELIJK: wachten voor %d milliseconden.\n", random * 10);
 
     // 3. In tussentijd kijken voor valse start
     int falseStart = checkForButtonInput(random, false);
