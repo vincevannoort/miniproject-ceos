@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <sys/time.h>
 #include "setupwpi.h"
 #include "reaction.h"
 
@@ -26,15 +27,11 @@ int main(void) {
     }
 
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
-    static struct timeval begin;
-    static struct timeval end;
-
-    gettimeofday(&begin, NULL);
+    struct timeval stop, start;
+    gettimeofday(&start, NULL);
     printf("Winner: %d\n", checkForButtonInput(500, true));
-    gettimeofday(&end, NULL);
-
-    printf("Time to press: %f\n", (1000 * (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec) / 1000));
-
+    gettimeofday(&stop, NULL);
+    printf("took %lu\n", stop.tv_usec - start.tv_usec);
     // 5. Wachten op user input
 
     // 6. Gemeten tijd & wie gewonnen heeft tonen
