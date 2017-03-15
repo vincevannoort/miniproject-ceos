@@ -72,7 +72,6 @@ int checkForButtonInput(int timeToMeasure, bool realGame) {
   for (i = 0; i < timeToMeasure; i++) {
     // 1 pressed
     if(digitalRead (b11) == 1 || digitalRead(b12) == 1){
-      printf("Button 1 pressed\n");
       digitalWrite(red, 1);
       delay (10);
       digitalWrite(red, 0);
@@ -80,7 +79,6 @@ int checkForButtonInput(int timeToMeasure, bool realGame) {
     }
     // 1 pressed
     else if(digitalRead (b21) == 1 || digitalRead (b22) == 1){
-      printf("Button 2 pressed\n");
       digitalWrite(ylw, 1);
       delay (10);
       digitalWrite(ylw, 0);

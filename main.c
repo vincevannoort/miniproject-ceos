@@ -26,7 +26,14 @@ int main(void) {
     }
 
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
+    time_t start_t, end_t;
+    double diff_t;
+
+    time(&start_t);
     printf("Winner: %d\n", checkForButtonInput(500, true));
+    time(&end_t);
+    diff_t = difftime(end_t, start_t);
+    printf("Time to press: %f\n", diff_t);
 
     // 5. Wachten op user input
 
