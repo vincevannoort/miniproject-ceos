@@ -32,20 +32,29 @@
 #include <wiringPi.h>
 #include <time.h>
 
+int red = 0;     
+int b11 = 1;    
+int b12 = 2;    
+int b21 = 3;    
+int b22 = 4;    
+int grn = 5;   
+int ylw = 6;   
+int buzz = 21;
+
 void setupPins() {
   printf ("Setting up Raspberry Pi Pins\n") ;
  
   if (wiringPiSetup () == -1)
     return 1 ;
  
-  pinMode (0, OUTPUT); int red = 0;     // physical pin 11
-  pinMode (1, INPUT); int b11 = 1;      // button 1, R1 (red wire)- physical pin 12
-  pinMode (2, INPUT); int b12 = 2;      // button 1, R2 - physical pin 13
-  pinMode (3, INPUT); int b21 = 3;      // button 2, R1 (blue wire)- physical pin 15
-  pinMode (4, INPUT); int b22 = 4;      // button 2, R2 - physical pin 16
-  pinMode (5, OUTPUT); int grn = 5;     // green led, physical pin 18
-  pinMode (6, OUTPUT); int ylw = 6;     //yellow led, physical pin 22
-  pinMode (21, OUTPUT); int buzz = 21;  //buzzer, physical pin 29
+  pinMode (0, OUTPUT);  // physical pin 11
+  pinMode (1, INPUT);   // button 1, R1 (red wire)- physical pin 12
+  pinMode (2, INPUT);   // button 1, R2 - physical pin 13
+  pinMode (3, INPUT);   // button 2, R1 (blue wire)- physical pin 15
+  pinMode (4, INPUT);   // button 2, R2 - physical pin 16
+  pinMode (5, OUTPUT);  // green led, physical pin 18
+  pinMode (6, OUTPUT);  //yellow led, physical pin 22
+  pinMode (21, OUTPUT); //buzzer, physical pin 29
 }
 
 char checkForButtonInput(int timeToMeasure) {
