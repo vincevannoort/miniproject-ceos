@@ -42,7 +42,7 @@ int ylw = 6;
 int buzz = 21;
 
 int setupPins() {
-  printf ("Setting up Raspberry Pi Pins\n") ;
+  printf ("Setting up Raspberry Pi Pins...\n") ;
  
   if (wiringPiSetup () == -1)
     return 1 ;
@@ -55,10 +55,12 @@ int setupPins() {
   pinMode (5, OUTPUT);  // green led, physical pin 18
   pinMode (6, OUTPUT);  //yellow led, physical pin 22
   pinMode (21, OUTPUT); //buzzer, physical pin 29
+  printf ("Done. ;P\n\n") ;
 }
 
 char checkForButtonInput(int timeToMeasure) {
-  for (;;)
+  printf ("Game started.\n") ;
+  for (int i = 0; i < (timeToMeasure * 10); i++)
   {
     // 1 pressed
     if(digitalRead (b11) == 1){
