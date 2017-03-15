@@ -3,9 +3,13 @@
 // Miniproject CEOS
 /* --------------------------- */
 #include <stdio.h>
+#include "setupwpi.h"
+#include "reaction.h"
 
 int main(void) {
     // 1. Er wordt game gestart
+    setupPins();
+    checkForButtonInput();
     // 2. Random tijd wachten voordat de game echt start
     // 3. In tussentijd kijken voor valse start
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)

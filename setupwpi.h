@@ -32,63 +32,54 @@
 #include <wiringPi.h>
 #include <time.h>
 
-
-int main (void)
-{
-  printf ("Raspberry Pi blink\n") ;
+void setupPins() {
+  printf ("Setting up Raspberry Pi Pins\n") ;
  
   if (wiringPiSetup () == -1)
     return 1 ;
  
- //mode; compontent
-  pinMode (0, OUTPUT); int red = 0;       // physical pin 11
-  pinMode (1, INPUT); int b11 = 1;   // button 1, R1 (red wire)- physical pin 12
-  pinMode (2, INPUT); int b12 = 2;   // button 1, R2 - physical pin 13
-  pinMode (3, INPUT); int b21 = 3;   // button 2, R1 (blue wire)- physical pin 15
-  pinMode (4, INPUT); int b22 = 4;   // button 2, R2 - physical pin 16
-  pinMode (5, OUTPUT); int grn = 5;  // green led, physical pin 18
-  pinMode (6, OUTPUT); int ylw = 6;   //yellow led, physical pin 22
-  pinMode (21, OUTPUT); int buzz = 21; //buzzer, physical pin 29
- 
-  // for (;;)
-  // {
-  //   digitalWrite (red, 1) ;       // On
-  //   delay (500) ;               // mS
-  //   digitalWrite (red, 0) ;       // Off
-  //   delay (500) ;
-  // }
+  pinMode (0, OUTPUT); int red = 0;     // physical pin 11
+  pinMode (1, INPUT); int b11 = 1;      // button 1, R1 (red wire)- physical pin 12
+  pinMode (2, INPUT); int b12 = 2;      // button 1, R2 - physical pin 13
+  pinMode (3, INPUT); int b21 = 3;      // button 2, R1 (blue wire)- physical pin 15
+  pinMode (4, INPUT); int b22 = 4;      // button 2, R2 - physical pin 16
+  pinMode (5, OUTPUT); int grn = 5;     // green led, physical pin 18
+  pinMode (6, OUTPUT); int ylw = 6;     //yellow led, physical pin 22
+  pinMode (21, OUTPUT); int buzz = 21;  //buzzer, physical pin 29
+}
 
-  ///
-  for (;;)                            //poll button press
+char checkForButtonInput(int timeToMeasure) {
+  for (;;)
   {
-    if(digitalRead (b11) == 1){         //1 pressed
+    // 1 pressed
+    if(digitalRead (b11) == 1){
       printf("Button 1.1 pressed\n");
       digitalWrite(red, 1);
       delay (100);
       digitalWrite(red, 0);
-      }
-    else if(digitalRead (b12) == 1){    //2 pressed
+    }
+    // 2 pressed
+    else if(digitalRead (b12) == 1){    
       printf("Button 1.2 pressed\n");
       digitalWrite(grn, 1);
       delay (100);
       digitalWrite(grn, 0);
-      }
-    else if(digitalRead (b21) == 1){         //1 pressed
+    }
+    // 1 pressed
+    else if(digitalRead (b21) == 1){
       printf("Button 2.1 pressed\n");
       digitalWrite(ylw, 1);
       delay (100);
       digitalWrite(ylw, 0);
-      }
-    else if(digitalRead (b22) == 1){    //2 pressed
+    }
+    // 2 pressed
+    else if(digitalRead (b22) == 1){
       printf("Button 2.2 pressed\n");
       digitalWrite(buzz, 1);
       delay (100);
       digitalWrite(buzz, 0);
-      }
-    else {
-      printf("No button pressed\n");
-      }
+    }
     delay (100);                      //in mS
   }
-  return 0 ;
+  return 0;
 }
