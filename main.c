@@ -26,14 +26,15 @@ int main(void) {
     }
 
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
-    time_t start_t, end_t;
-    double diff_t;
+    static struct timeval begin;
+    static struct timeval end;
 
-    time(&start_t);
+    gettimeofday(&begin, NULL);
     printf("Winner: %d\n", checkForButtonInput(500, true));
-    time(&end_t);
+    gettimeofday(&end, NULL);
+
     diff_t = difftime(end_t, start_t);
-    printf("Time to press: %f\n", diff_t);
+    printf("Time to press: %f\n", (1000 * (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec) / 1000));
 
     // 5. Wachten op user input
 
