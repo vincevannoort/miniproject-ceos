@@ -32,7 +32,7 @@ int main(void) {
         int falseStart = checkForButtonInput(random, false);
         if (falseStart) {
             printf("Valse start: %d \n", checkForButtonInput(random, false));
-            return 0;
+            continue;
         }
 
         // 3. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
@@ -49,6 +49,8 @@ int main(void) {
         // 4. Save highscores
         // FILE *highscorefile = fopen("highscore.txt", "r");
 
+        delay(1000);
+        printf("\n Starting new game. \n");
     }
 
 
