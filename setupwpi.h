@@ -41,7 +41,7 @@ int grn = 5;
 int ylw = 6;   
 int buzz = 21;
 
-void setupPins() {
+int setupPins() {
   printf ("Setting up Raspberry Pi Pins\n") ;
  
   if (wiringPiSetup () == -1)
