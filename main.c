@@ -17,10 +17,10 @@ int main(void) {
     printf("TIJDELIJK: wachten voor %d seconden.\n", random);
 
     // 3. In tussentijd kijken voor valse start
-    printf("Valse start: %d", checkForButtonInput(random, false));
+    printf("Valse start: %d \n", checkForButtonInput(random, false));
 
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
-    printf("Winner: %d", checkForButtonInput(5, true));
+    printf("Winner: %d\n", checkForButtonInput(5, true));
 
     // 5. Wachten op user input
 
