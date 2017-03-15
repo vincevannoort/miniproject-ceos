@@ -58,38 +58,29 @@ int setupPins() {
   printf ("Done. ;P\n\n") ;
 }
 
-char checkForButtonInput(int timeToMeasure) {
+int checkForButtonInput(int timeToMeasure) {
   int i = 0;
+  digitalWrite(buzz, 1);
+  delay(50);
+  digitalWrite(buzz, 0);
   printf ("Game started.\n") ;
   for (i = 0; i < (timeToMeasure * 10); i++)
   {
     // 1 pressed
-    if(digitalRead (b11) == 1){
-      printf("Button 1.1 pressed\n");
+    if(digitalRead (b11) == 1 || digitalRead(b12) == 1){
+      printf("Button 1 pressed\n");
       digitalWrite(red, 1);
       delay (100);
       digitalWrite(red, 0);
-    }
-    // 2 pressed
-    else if(digitalRead (b12) == 1){    
-      printf("Button 1.2 pressed\n");
-      digitalWrite(grn, 1);
-      delay (100);
-      digitalWrite(grn, 0);
+      return 1;
     }
     // 1 pressed
-    else if(digitalRead (b21) == 1){
-      printf("Button 2.1 pressed\n");
+    else if(digitalRead (b21) == 1 || digitalRead (b22) == 1){
+      printf("Button 2 pressed\n");
       digitalWrite(ylw, 1);
       delay (100);
       digitalWrite(ylw, 0);
-    }
-    // 2 pressed
-    else if(digitalRead (b22) == 1){
-      printf("Button 2.2 pressed\n");
-      digitalWrite(buzz, 1);
-      delay (100);
-      digitalWrite(buzz, 0);
+      return 2;
     }
     delay (100);                      //in mS
   }
