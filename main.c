@@ -10,6 +10,15 @@
 #include "setupwpi.h"
 #include "reaction.h"
 
+// Colors
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
+
 int main(void) {
     // 1. Er wordt game gestart
     setupPins();
@@ -29,9 +38,11 @@ int main(void) {
     // 4. Game starten en timer beginnnen (lichtjes of buzzer aanzetten)
     struct timeval start, stop;
     double secs = 0;
+
     gettimeofday(&start, NULL);
-    printf("Winner: %d\n", checkForButtonInput(500, true));
+    printf("Winner: " ANSI_COLOR_GREEN "player %d." ANSI_COLOR_RESET "\n", checkForButtonInput(500, true));
     gettimeofday(&stop, NULL);
+
     secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
     printf("time taken %f\n",secs);
 
